@@ -14,10 +14,14 @@ class Solution(object):
                 else:
                     d[i]=1
             l=0
-            has_odd=False
-            for count in d.values():
-                l += count // 2 * 2
-                if count % 2 == 1:
-                    has_odd = True
-            
-            return l + 1 if has_odd else l
+            for i in d:
+                if d[i]%2==0:
+                    l+=d[i]
+                else:
+                    l+=(d[i]-1)
+                    d[i]=1
+            for i in d.values():
+                if i==1:
+                    l+=1
+                    break
+            return l
