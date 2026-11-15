@@ -1,18 +1,19 @@
 class Solution:
     def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
-        
-        min_sum = 100000000
-        n = len(nums)
-        
-        for i in range(n):
-            current_sum = 0
-            for j in range(i, n):
-                current_sum += nums[j]
-                length = j - i + 1
-                
-                if l <= length <= r and current_sum > 0:
-                    min_sum = min(min_sum, current_sum)
-                    
-        return min_sum if min_sum != 100000000 else -1            
+        le=len(nums)
+        p=10000000
+        for i in  range(le):
+            for j in range(le-i):
+                s=0
+                ls=0
+                for k in range(i,i+j+1):
+                    s+=nums[k]
+                    ls+=1
+                if s>0 and l<=ls<=r:
+                    p=min(s,p)
+        if p==10000000:
+            return -1
+        return p
+
 
         
